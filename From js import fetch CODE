@@ -1,0 +1,20 @@
+from js import fetch
+import io
+
+URL = 'https://whatevertheurlisyooooooooooooooooooooo/airline_data.csv'
+resp = await fetch(URL)
+text = io.BytesIO((await resp.arrayBuffer()).to_py())
+
+
+
+
+#I don't understand this part!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+airline_data = pd.read_csv(text,
+                            encoding = "ISO-8859-1",
+                            dtype={'Div1Airport': str, 'Div1TailNum': str, 
+                                   'Div2Airport': str, 'Div2TailNum': str})
+
+print('Data downloaded and read into a dataframe!')
+
+#to see data
+airline_data.head()
